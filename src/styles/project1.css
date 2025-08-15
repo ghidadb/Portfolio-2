@@ -1,0 +1,105 @@
+/* ===== Project 1 (Compound Component Pattern) ===== */
+.project1 {
+  display: grid;
+  gap: 24px;
+}
+
+/* Page title */
+.project1-title {
+  font-size: clamp(28px, 4.6vw, 40px);
+  font-weight: 900;
+  color: var(--primary);
+  letter-spacing: .2px;
+  margin: 0 0 4px;
+}
+
+/* Subtext (optional helper) */
+.project1-sub {
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+/* Counter wrapper (we pass this as className to <Counter/>) */
+.project-counter {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 14px;
+  border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid rgba(10, 31, 68, 0.10);
+  box-shadow: var(--shadow);
+  transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;
+}
+
+.project-counter:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-strong);
+  border-color: rgba(22, 104, 216, 0.25);
+  background: linear-gradient(180deg, rgba(0,188,212,.06), rgba(22,104,216,.04)), var(--surface);
+}
+
+/* Label */
+.project-counter .counter-label {
+  font-weight: 800;
+  color: var(--primary);
+}
+
+/* Count */
+.project-counter .counter-count {
+  min-width: 36px;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--primary);
+}
+
+/* Buttons (use your global .btn look, add tweaks here) */
+.project-counter .btn {
+  padding-inline: 14px;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #012634;
+  font-weight: 900;
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: transform .15s ease, filter .15s ease, box-shadow .15s ease;
+}
+
+.project-counter .btn:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+}
+
+.project-counter .btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--ring);
+}
+
+/* Layout variant: arrow buttons around count */
+.project-counter.variant-arrows {
+  gap: 16px;
+}
+
+.project-counter.variant-arrows .counter-count {
+  font-size: 1.35rem;
+}
+
+/* Section spacing */
+.project1 .group {
+  display: grid;
+  gap: 12px;
+}
+
+/* Responsive */
+@media (max-width: 520px) {
+  .project-counter {
+    padding: 12px;
+    gap: 10px;
+  }
+  .project-counter .counter-count {
+    min-width: 30px;
+    font-size: 1.15rem;
+  }
+}
