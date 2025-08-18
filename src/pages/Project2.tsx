@@ -1,9 +1,9 @@
 import { useState, type ReactNode } from 'react'
 import { faker } from '@faker-js/faker'
 import withToggles from '../components/withToggles'
-import '../styles/project2.css' // use relative path; works without vite alias
+import '../styles/project2.css' 
 
-/** ---------- Types ---------- */
+/*Types*/
 type Product = {
   id: string
   title: string
@@ -19,26 +19,25 @@ type Maker = {
   bio: string
 }
 
-/** ---------- Mock Data (English, product-themed) ---------- */
+
 const categories = ['Electronics', 'Furniture', 'Appliances', 'Clothing', 'Sports', 'Automotive']
 
 const products: Product[] = Array.from({ length: 12 }, () => ({
   id: faker.string.uuid(),
-  title: faker.commerce.productName(),            // e.g., "Tasty Steel Keyboard"
+  title: faker.commerce.productName(),            
   category: faker.helpers.arrayElement(categories),
-  summary: faker.commerce.productDescription(),   // clear English product-style text
+  summary: faker.commerce.productDescription(),   
   featureCount: faker.number.int({ min: 3, max: 12 }),
 }))
 
 const makers: Maker[] = Array.from({ length: 10 }, () => ({
   id: faker.string.uuid(),
-  name: faker.company.name(),                     // e.g., "Acme Industries"
+  name: faker.company.name(),                    
   nationality: faker.location.country(),
-  bio: faker.company.catchPhrase(),               // short English tagline
+  bio: faker.company.catchPhrase(),               
 }))
 
-/** ---------- Item Components ---------- */
-/* Keep class names .book/.author so your CSS applies without changes */
+/* Item Components */
 function ProductItem({ product }: { product: Product }) {
   return (
     <li className="book">
@@ -77,7 +76,7 @@ function MakerItem({
   )
 }
 
-/** ---------- Generic List (Render Props) ---------- */
+
 function List<T>({
   title,
   items,
@@ -113,7 +112,7 @@ function List<T>({
   )
 }
 
-/** ---------- “3rd-party” List (HOC target) ---------- */
+
 function MakerList({
   title,
   items,
@@ -132,21 +131,21 @@ function MakerList({
 
 const MakerListWithToggles = withToggles<Maker>(MakerList)
 
-/** ---------- Page ---------- */
+/* Page */
 export default function Project2() {
   return (
     <div className="container page">
       <h1>Render Props & HOC — Products & Makers</h1>
 
       <div className="col-2">
-        {/* Products = Render Props version */}
+        {/* Products */}
         <List<Product>
           title="Products"
           items={products}
           render={(product) => <ProductItem key={product.id} product={product} />}
         />
 
-        {/* Makers = HOC version (open/collapse + show less) */}
+        {/* Makers */}
         <MakerListWithToggles title="Makers" items={makers} />
       </div>
     </div>

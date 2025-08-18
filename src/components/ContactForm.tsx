@@ -14,7 +14,7 @@ export default function ContactForm() {
 
   return (
     <section id="contact" className="contact-section container">
-      {/* Watermark-safe content wrapper */}
+      {/* Watermark*/}
       <div className="contact-content">
         <h2>Contact Me</h2>
         <form className="contact-form" onSubmit={onSubmit}>

@@ -1,9 +1,5 @@
 import { useState, type ComponentType } from 'react'
 
-/**
- * Generic HOC that adds: open/close + collapse/show-less to any list component.
- * It preserves the WrappedComponent's props and enforces an items: T[] prop.
- */
 export default function withToggles<T>(
   WrappedComponent: ComponentType<{ title: string; items: T[] }>
 ) {
